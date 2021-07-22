@@ -3,3 +3,5 @@ kind: Kustomization
 
 resources:
   - acs-operator.yaml
+  - acs-password.yaml
+  - acs-central.yaml
