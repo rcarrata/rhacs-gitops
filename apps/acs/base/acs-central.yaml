@@ -5,8 +5,11 @@ metadata:
   namespace: stackrox
   annotations:
     argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   central:
+    adminPasswordSecret:
+      name: acs-password
     exposure:
       loadBalancer:
         enabled: false

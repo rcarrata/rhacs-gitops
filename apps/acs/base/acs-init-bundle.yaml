@@ -1,0 +1,33 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "6"
+  name: acs-init-bundle
+  namespace: stackrox
+spec:
+  template:
+    spec:
+      containers:
+        - image: registry.redhat.io/openshift4/ose-cli:v4.7
+          command:
+            - /bin/bash
+            - -c
+            - |
+              export HOME=/tmp/pull
+              echo ""
+              echo "========================"
+              CENTRAL=$(oc get svc central -n stackrox -o jsonpath='{.spec.clusterIP}')
+              echo $CENTRAL
+
+              echo "========================"
+          imagePullPolicy: Always
+          name: acs-init-task
+          env:
+          - name: ACS_PASSWORD
+            value: "stackrox"
+      restartPolicy: OnFailure
+      serviceAccount: central
+      serviceAccountName: central
+      terminationGracePeriodSeconds: 30
+
