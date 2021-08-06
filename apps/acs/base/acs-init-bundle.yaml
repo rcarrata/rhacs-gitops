@@ -17,6 +17,7 @@ spec:
               export HOME=/tmp/pull
               echo ""
               echo "========================"
+              sleep 120
               # This is a check for check the readiness of the central
               CENTRAL_STATUS=false; while [ "$CENTRAL_STATUS" == "false" ]; do CENTRAL_STATUS=$(oc get pod -l app.kubernetes.io/component=central -o jsonpath='{.items[*].status.containerStatuses[].ready}'); done
               yum install -qy jq
