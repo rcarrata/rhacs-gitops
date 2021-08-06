@@ -2,7 +2,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   annotations:
-    argocd.argoproj.io/sync-wave: "6"
+    argocd.argoproj.io/sync-wave: "3"
   name: acs-init-bundle
   namespace: stackrox
 spec:
@@ -19,9 +19,12 @@ spec:
               echo "========================"
               yum install -qy jq
               CENTRAL=$(oc get svc central -n stackrox -o jsonpath='{.spec.clusterIP}')
-              echo $CENTRAL
-              INIT_BUNDLE=$(curl -X POST -k -H 'Authorization: Basic YWRtaW46c3RhY2tyb3g=' https://$CENTRAL/v1/cluster-init/init-bundles --data '{"name": "production5"}')
+              #echo $CENTRAL
+              echo "Generating the init-bundle..."
+              AUTH=$(echo "admin:$ACS_PASSWORD" | tr -d \\n | base64)
+              INIT_BUNDLE=$(curl -X POST -k -H 'Authorization: Basic ${AUTH}' https://$CENTRAL/v1/cluster-init/init-bundles --data '{"name": "'"$ACS_SECURED_CLUSTER"'"}')
               echo $INIT_BUNDLE | jq -r .kubectlBundle | base64 -d > init-bundle.yaml
+              echo "Applying the init bundle secrets..."
               oc apply -f init-bundle.yaml
               echo "========================"
           imagePullPolicy: Always
@@ -29,6 +32,8 @@ spec:
           env:
           - name: ACS_PASSWORD
             value: "stackrox"
+          - name: ACS_SECURED_CLUSTER
+            value: "demo-cluster"
       restartPolicy: OnFailure
       serviceAccount: acs-gitops
       serviceAccountName: acs-gitops
