@@ -13,4 +13,8 @@ until oc apply -k bootstrap/base/; do sleep 2; done
 oc apply -k acs-deploy/base/
 ```
 
+## Video of the Demo
+
+* [Demo](https://youtu.be/33XuvCPLZ58)
+
 Enjoy!
