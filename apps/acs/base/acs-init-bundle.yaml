@@ -30,7 +30,7 @@ spec:
           - name: ACS_PASSWORD
             value: "stackrox"
       restartPolicy: OnFailure
-      serviceAccount: central
-      serviceAccountName: central
+      serviceAccount: acs-gitops
+      serviceAccountName: acs-gitops
       terminationGracePeriodSeconds: 30
 

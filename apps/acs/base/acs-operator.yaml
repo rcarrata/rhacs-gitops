@@ -4,7 +4,7 @@ metadata:
   name: rhacs-operator
   namespace: openshift-operators
   annotations:
-    argocd.argoproj.io/sync-wave: "0"
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   channel: latest
   installPlanApproval: Automatic
