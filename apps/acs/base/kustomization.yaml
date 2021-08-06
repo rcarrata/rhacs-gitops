@@ -6,3 +6,5 @@ resources:
   - acs-ns.yaml
   - acs-password.yaml
   - acs-central.yaml
+  - acs-rbac.yaml
+  - acs-sa.yaml

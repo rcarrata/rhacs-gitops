@@ -17,9 +17,12 @@ spec:
               export HOME=/tmp/pull
               echo ""
               echo "========================"
+              yum install -qy jq
               CENTRAL=$(oc get svc central -n stackrox -o jsonpath='{.spec.clusterIP}')
               echo $CENTRAL
-
+              INIT_BUNDLE=$(curl -X POST -k -H 'Authorization: Basic YWRtaW46c3RhY2tyb3g=' https://$CENTRAL/v1/cluster-init/init-bundles --data '{"name": "production5"}')
+              echo $INIT_BUNDLE | jq -r .kubectlBundle | base64 -d > init-bundle.yaml
+              oc apply -f init-bundle.yaml
               echo "========================"
           imagePullPolicy: Always
           name: acs-init-task

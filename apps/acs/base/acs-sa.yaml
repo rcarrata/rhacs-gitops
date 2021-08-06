@@ -1,0 +1,7 @@
+apiversion: v1
+kind: serviceaccount
+metadata:
+  name: acs-gitops
+  namespace: stackrox
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
