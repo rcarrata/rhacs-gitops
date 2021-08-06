@@ -22,7 +22,7 @@ spec:
               #echo $CENTRAL
               echo "Generating the init-bundle..."
               AUTH=$(echo "admin:$ACS_PASSWORD" | tr -d \\n | base64)
-              INIT_BUNDLE=$(curl -X POST -k -H 'Authorization: Basic ${AUTH}' https://$CENTRAL/v1/cluster-init/init-bundles --data '{"name": "'"$ACS_SECURED_CLUSTER"'"}')
+              INIT_BUNDLE=$(curl -X POST -k --header "Authorization: Basic ${AUTH}" https://$CENTRAL/v1/cluster-init/init-bundles --data '{"name": "'"$ACS_SECURED_CLUSTER"'"}')
               echo $INIT_BUNDLE | jq -r .kubectlBundle | base64 -d > init-bundle.yaml
               echo "Applying the init bundle secrets..."
               oc apply -f init-bundle.yaml
