@@ -7,7 +7,7 @@ metadata:
     argocd.argoproj.io/sync-wave: "1"
 roleRef:
   apiGroup: rbac.authorization.k8s.io
-  kind: Role
+  kind: ClusterRole
   name: admin
 subjects:
 - kind: ServiceAccount
@@ -18,11 +18,13 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   creationTimestamp: null
-  name: system:openshift:scc:privileged
+  name: acs-rb-anyuid
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: system:openshift:scc:privileged
+  name: system:openshift:scc:anyuid
 subjects:
 - kind: ServiceAccount
   name: acs-gitops
