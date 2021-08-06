@@ -17,7 +17,7 @@ spec:
               export HOME=/tmp/pull
               echo ""
               echo "========================"
-              sleep 60
+              #sleep 60
               yum install -qy jq
               echo "Generating the init-bundle..."
               AUTH=$(echo "admin:$ACS_PASSWORD" | tr -d \\n | base64)
