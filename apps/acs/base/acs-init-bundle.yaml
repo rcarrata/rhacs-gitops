@@ -17,7 +17,7 @@ spec:
               export HOME=/tmp/pull
               echo ""
               echo "========================"
-              echo -n "Waiting for ACS Central service\n"
+              echo -e "Waiting for ACS Central service\n"
               until [ $(curl -s -k -o /dev/null -w "%{http_code}" https://central) -eq 200 ]; do echo -n "."; sleep 15; done
               echo -e "Online!\n"
               yum install -qy jq

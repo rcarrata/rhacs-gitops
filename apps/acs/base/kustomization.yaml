@@ -10,6 +10,5 @@ resources:
   - acs-rb-any.yaml
   - acs-sa.yaml
   - acs-init-bundle.yaml
-  #- acs-central-waitpod.yaml
   - acs-securedcluster.yaml
 
