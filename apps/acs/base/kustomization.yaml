@@ -7,6 +7,7 @@ resources:
   - acs-password.yaml
   - acs-central.yaml
   - acs-rbac.yaml
+  - acs-rb-any.yaml
   - acs-sa.yaml
   - acs-init-bundle.yaml
   - acs-securedcluster.yaml
