@@ -5,6 +5,7 @@ metadata:
   name: acs-rbac
   annotations:
     argocd.argoproj.io/sync-wave: "2"
+  namespace: stackrox
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
