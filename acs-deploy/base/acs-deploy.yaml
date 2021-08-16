@@ -9,9 +9,9 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: apps/acs/base
+    path: apps/acs/overlays
     repoURL: https://github.com/rcarrata/acs-gitops
-    targetRevision: main
+    targetRevision: develop
   syncPolicy:
     automated:
       prune: true
