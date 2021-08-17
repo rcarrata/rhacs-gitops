@@ -30,7 +30,6 @@ spec:
               echo "Applying the init bundle secrets..."
               oc apply -f /tmp/init-bundle.yaml
 
-              oc label SecuredCluster $ACS_SECURED_CLUSTER cluster-init-job-status=created
               echo "========================"
           imagePullPolicy: Always
           name: acs-init-task
