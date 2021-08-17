@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: acs-gitops
+  name: acs-operator
   namespace: openshift-gitops
 spec:
   destination:
@@ -9,9 +9,9 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: apps/acs/base
+    path: apps/acs/overlays
     repoURL: https://github.com/rcarrata/acs-gitops
-    targetRevision: main
+    targetRevision: develop
   syncPolicy:
     automated:
       prune: true

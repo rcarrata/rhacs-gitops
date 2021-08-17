@@ -1,5 +1,6 @@
-# acs-gitops
-Repository for install ACS as GitOps
+# ACS Installation using Openshift GitOps
+
+Repository for install ACS using Openshift GitOps
 
 ## Bootstrap Openshift GitOps / ArgoCD
 
@@ -15,6 +16,6 @@ oc apply -k acs-deploy/base/
 
 ## Video of the Demo
 
-* [Demo](https://youtu.be/33XuvCPLZ58)
+* [Small Video Demonstration](https://youtu.be/33XuvCPLZ58) about ACS installed using Openshift GitOps
 
 Enjoy!

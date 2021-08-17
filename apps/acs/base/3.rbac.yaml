@@ -1,0 +1,52 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: acs-cluster-init-role
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+  namespace: stackrox
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - secrets
+    verbs:
+      - get
+      - list
+      - create
+      - patch
+      - update
+  - apiGroups:
+      - platform.stackrox.io
+    resources:
+      - securedcluster
+    verbs:
+      - get
+      - list
+      - patch
+      - update
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  creationTimestamp: null
+  name: acs-cluster-init-rb
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+  namespace: stackrox
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: acs-cluster-init-role
+subjects:
+- kind: ServiceAccount
+  name: acs-gitops
+  namespace: stackrox
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: acs-gitops
+  namespace: stackrox
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"

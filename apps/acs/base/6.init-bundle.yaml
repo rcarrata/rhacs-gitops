@@ -15,18 +15,21 @@ spec:
             - -c
             - |
               export HOME=/tmp/pull
+              set -x
               echo ""
               echo "========================"
               echo -e "Waiting for ACS Central service\n"
               until [ $(curl -s -k -o /dev/null -w "%{http_code}" https://central) -eq 200 ]; do echo -n "."; sleep 15; done
               echo -e "Online!\n"
-              yum install -qy jq
+
+              #yum install -qy jq
               echo "Generating the init-bundle..."
               AUTH=$(echo "admin:$ACS_PASSWORD" | tr -d \\n | base64)
               INIT_BUNDLE=$(curl -X POST -k --header "Authorization: Basic ${AUTH}" https://central/v1/cluster-init/init-bundles --data '{"name": "'"$ACS_SECURED_CLUSTER"'"}')
-              echo $INIT_BUNDLE | jq -r .kubectlBundle | base64 -d > init-bundle.yaml
+              echo $INIT_BUNDLE | python3 -c "import sys, json; print(json.load(sys.stdin)['kubectlBundle'])" | base64 -d > /tmp/init-bundle.yaml
               echo "Applying the init bundle secrets..."
-              oc apply -f init-bundle.yaml
+              oc apply -f /tmp/init-bundle.yaml
+
               echo "========================"
           imagePullPolicy: Always
           name: acs-init-task

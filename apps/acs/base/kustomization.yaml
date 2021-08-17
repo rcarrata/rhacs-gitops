@@ -2,13 +2,11 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - acs-operator.yaml
-  - acs-ns.yaml
-  - acs-password.yaml
-  - acs-central.yaml
-  - acs-rbac.yaml
-  - acs-rb-any.yaml
-  - acs-sa.yaml
-  - acs-init-bundle.yaml
-  - acs-securedcluster.yaml
+  - 1.ns.yaml
+  - 2.subs.yaml
+  - 3.rbac.yaml
+  - 4.password.yaml
+  - 5.central.yaml
+  - 6.init-bundle.yaml
+  - 7.securedcluster.yaml
 
