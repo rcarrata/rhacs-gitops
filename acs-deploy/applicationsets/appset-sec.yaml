@@ -1,13 +1,13 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: acs-operator
+  name: appset-security
   namespace: openshift-gitops
 spec:
   generators:
   - git:
       repoURL: https://github.com/rcarrata/acs-gitops
-      revision: main
+      revision: develop
       directories:
       - path: apps/*
   template:
@@ -21,7 +21,7 @@ spec:
           selfHeal: true
       source:
         repoURL: https://github.com/rcarrata/acs-gitops
-        targetRevision: main
+        targetRevision: develop
         path: '{{path}}'
       destination:
         server: https://kubernetes.default.svc
