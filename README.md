@@ -1,6 +1,6 @@
 # ACS Installation using Openshift GitOps
 
-Repository for install ACS using Openshift GitOps
+Repository for install ACS using Openshift GitOps and/or ACM
 
 # Prerequisites
 
@@ -19,18 +19,23 @@ This demo contains 4 modes of Installation
 * ACM Applications (WIP)
 * ACM ApplicationSet (WIP)
 
-## Install ACS through gitops using App of Apps
+## Install ACS through gitops using App of Apps (in local cluster)
 
 ```
 oc apply -k acs-deploy/applications
 ```
 
-## Install ACS through gitops using ApplicationSets
+## Install ACS through gitops using ApplicationSets (in local cluster)
 
 ```
 oc apply -k acs-deploy/applicationsets
 ```
 
+## Install ACS through gitops using ApplicationSets (in multiple managed clusters)
+
+```
+oc apply -k acs-deploy/applicationsets
+```
 
 # Video of the Demo
 
