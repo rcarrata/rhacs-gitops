@@ -1,0 +1,40 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: appset-security
+  namespace: openshift-gitops
+spec:
+  generators:
+    - clusterDecisionResource:
+        configMapRef: acm-placementrule
+        name: acs-placement
+        requeueAfterSeconds: 30
+  template:
+    metadata:
+      name: '{{path.basename}}'
+    spec:
+      project: default
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+      source:
+        repoURL: https://github.com/rcarrata/acs-gitops
+        targetRevision: develop
+        path: '{{path}}'
+      destination:
+        server: https://kubernetes.default.svc
+---
+apiVersion: apps.open-cluster-management.io/v1
+kind: PlacementRule
+metadata:
+  name: acs-placement
+  namespace: openshift-gitops
+spec:
+  clusterReplicas: 1
+  clusterSelector:
+    matchLabels:
+      'usage': 'production'
+  clusterConditions:
+    - type: ManagedClusterConditionAvailable
+      status: "True"

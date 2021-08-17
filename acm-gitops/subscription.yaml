@@ -1,0 +1,18 @@
+apiVersion: apps.open-cluster-management.io/v1
+kind: Subscription
+metadata:
+  name: acs-argo-app
+  namespace: application-gitops
+  labels:
+    app: acs-argo-app
+  annotations:
+    apps.open-cluster-management.io/github-path: acs-deploy/acm-appset
+    apps.open-cluster-management.io/github-branch: develop
+    apps.open-cluster-management.io/reconcile-option: merge
+spec:
+  channel:
+  placement:
+    placementRef:
+      name: remote-argo-app
+      kind: PlacementRule
+      group: apps.open-cluster-management.io
