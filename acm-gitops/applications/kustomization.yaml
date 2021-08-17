@@ -1,5 +1,4 @@
 resources:
-- namespace.yaml
 - application.yaml
 - channel.yaml
 - placement.yaml

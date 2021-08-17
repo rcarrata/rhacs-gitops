@@ -2,7 +2,7 @@ apiVersion: apps.open-cluster-management.io/v1
 kind: Subscription
 metadata:
   name: acs-argo-app
-  namespace: application-samples
+  namespace: openshift-gitops
   labels:
     app: acs-argo-app
   annotations:
@@ -10,7 +10,7 @@ metadata:
     apps.open-cluster-management.io/github-branch: develop
     apps.open-cluster-management.io/reconcile-option: merge
 spec:
-  channel: application-samples/gitops
+  channel: openshift-gitops/gitops
   placement:
     placementRef:
       name: acs-argo-app
