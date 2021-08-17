@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: apps/acs/overlays
+    path: apps/acs
     repoURL: https://github.com/rcarrata/acs-gitops
     targetRevision: develop
   syncPolicy:
