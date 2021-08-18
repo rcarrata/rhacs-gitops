@@ -32,11 +32,11 @@ oc apply -k acs-deploy/applicationsets
 ```
 <img align="center" width="750" src="assets/pic6.png">
 
-## C - Install ACS through gitops using Applications (in multiple managed clusters)
+## C - Install ACS from ACM using Argo Applications (in multiple managed clusters)
 
 * Under Construction
 
-## D - Install ACS through gitops using ApplicationSets (in multiple managed clusters)
+## D - Install ACS from ACM using Argo ApplicationSets (in multiple managed clusters)
 
 ```
 oc apply -k acm-gitops/applicationsets
