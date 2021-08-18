@@ -39,7 +39,7 @@ oc apply -k acs-deploy/applicationsets
 ## D - Install ACS through gitops using ApplicationSets (in multiple managed clusters)
 
 ```
-oc apply -k acs-deploy/applicationsets
+oc apply -k acm-gitops/applicationsets
 ```
 
 * ACM ApplicationSets management from GitOps
