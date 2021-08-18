@@ -1,0 +1,12 @@
+apiVersion: apps.open-cluster-management.io/v1
+kind: PlacementRule
+metadata:
+  namespace: openshift-gitops
+  name: acs-argo-appsets
+  annotations: {}
+  labels:
+    app: acs-argo-appsets
+spec:
+  clusterSelector:
+    matchLabels:
+      usage: production
