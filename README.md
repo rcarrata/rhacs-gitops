@@ -30,12 +30,29 @@ oc apply -k acs-deploy/applications
 ```
 oc apply -k acs-deploy/applicationsets
 ```
+<img align="center" width="750" src="assets/pic6.png">
+
+## Install ACS through gitops using Applications (in multiple managed clusters)
+
+* Under Construction
 
 ## Install ACS through gitops using ApplicationSets (in multiple managed clusters)
 
 ```
 oc apply -k acs-deploy/applicationsets
 ```
+
+* ACM ApplicationSets management from GitOps
+
+<img align="center" width="750" src="assets/pic1.png">
+
+* Application for manage the ArgoApplicationSets for deploy ACS among others
+
+<img align="center" width="750" src="assets/pic3.png">
+
+* Installation of ACS from ApplicationSet automatically
+
+<img align="center" width="750" src="assets/pic4.png">
 
 # Video of the Demo
 
