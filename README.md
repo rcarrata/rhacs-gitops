@@ -1,6 +1,6 @@
-# ACS Installation using Openshift GitOps
+# RHACS Installation using Openshift GitOps
 
-Repository for install ACS using Openshift GitOps and/or ACM
+Repository for install [Advanced Cluster Security for Kubernetes](https://cloud.redhat.com/products/kubernetes-security) using Openshift GitOps and/or ACM
 
 # 1. Prerequisites
 
