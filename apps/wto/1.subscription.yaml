@@ -6,7 +6,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "0"
 spec:
-  channel: alpha
+  channel: fast
   installPlanApproval: Automatic
   name: web-terminal
   source: redhat-operators
