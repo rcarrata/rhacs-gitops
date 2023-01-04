@@ -19,11 +19,9 @@ spec:
   scanner:
     analyzer:
       scaling:
-        autoScaling: Enabled
-        maxReplicas: 5
-        minReplicas: 2
-        replicas: 3
-    scannerComponent: AutoSense
+        autoScaling: Disabled
+        replicas: 1
+    scannerComponent: Enabled
   perNode:
     collector:
       collection: EBPF
