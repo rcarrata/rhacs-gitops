@@ -21,7 +21,7 @@ spec:
       scaling:
         autoScaling: Disabled
         replicas: 1
-    scannerComponent: Enabled
+    scannerComponent: AutoSense
   perNode:
     collector:
       collection: EBPF
