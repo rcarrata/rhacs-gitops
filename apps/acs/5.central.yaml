@@ -28,4 +28,4 @@ spec:
       scaling:
         autoScaling: Disabled
         replicas: 1
-    scannerComponent: AutoSense
+    scannerComponent: Enabled
