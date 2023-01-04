@@ -6,13 +6,26 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "5"
 spec:
-  admissionControl:
-    listenOnCreates: false
-    listenOnEvents: true
-    listenOnUpdates: false
   clusterName: demo-cluster
+  auditLogs:
+    collection: Auto
+  admissionControl:
+    listenOnUpdates: true
+    bypass: BreakGlassAnnotation
+    contactImageScanners: DoNotScanInline
+    listenOnCreates: true
+    timeoutSeconds: 20
+    listenOnEvents: true
+  scanner:
+    analyzer:
+      scaling:
+        autoScaling: Enabled
+        maxReplicas: 5
+        minReplicas: 2
+        replicas: 3
+    scannerComponent: AutoSense
   perNode:
     collector:
-      collection: KernelModule
+      collection: EBPF
       imageFlavor: Regular
     taintToleration: TolerateTaints
