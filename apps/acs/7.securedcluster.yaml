@@ -12,7 +12,7 @@ spec:
   admissionControl:
     listenOnUpdates: true
     bypass: BreakGlassAnnotation
-    contactImageScanners: DoNotScanInline
+    contactImageScanners: ScanIfMissing
     listenOnCreates: true
     timeoutSeconds: 20
     listenOnEvents: true
